@@ -8,7 +8,14 @@ function mainMenu() {
         type: "list",
         name: "choice",
         message: "What would you like to do?",
-        choices: ["View all departments", "View all roles", "Exit"],
+        choices: [
+          "View all departments",
+          "View all roles",
+          "Add a department",
+          "Add a role",
+          "Add an employee",
+          "Exit",
+        ],
       },
     ])
     .then((answer) => {
@@ -18,6 +25,15 @@ function mainMenu() {
           break;
         case "View all roles":
           viewRoles();
+          break;
+        case "Add a department":
+          addDepartment();
+          break;
+        case "Add a role":
+          addRole();
+          break;
+        case "Add an employee":
+          addEmployee();
           break;
         // Add cases for other menu options
         case "Exit":
@@ -56,6 +72,40 @@ function viewRoles() {
     });
 }
 
-// Define functions for other menu options (addDepartment, addRole, etc.)
+function addDepartment() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "departmentName",
+        message: "Enter the name of the department:",
+        validate: (input) => input.trim() !== "", // Validate that the input is not empty
+      },
+    ])
+    .then((answer) => {
+      connectionPool
+        .query("INSERT INTO department (name) VALUES (?)", [
+          answer.departmentName,
+        ])
+        .then(() => {
+          console.log(`Added department: ${answer.departmentName}`);
+          mainMenu();
+        })
+        .catch((error) => {
+          console.error("Error adding department:", error);
+          mainMenu();
+        });
+    });
+}
+
+function addRole() {
+  // TODO: Implement the function to add a role
+}
+
+function addEmployee() {
+  // TODO: Implement the function to add an employee
+}
+
+// ... (same as before)
 
 mainMenu();
