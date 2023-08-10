@@ -19,6 +19,7 @@ function mainMenu() {
         case "View all roles":
           viewRoles();
           break;
+        // Add cases for other menu options
         case "Exit":
           console.log("Goodbye!");
           connectionPool.end();
@@ -41,9 +42,20 @@ function viewDepartments() {
 }
 
 function viewRoles() {
-  // TODO: Implement this function to view roles
-  // You'll need to replace the SQL query and formatting logic
-  // similar to the viewDepartments function
+  connectionPool
+    .query(
+      "SELECT role.id, role.title, role.salary, department.name AS department FROM role LEFT JOIN department ON role.department_id = department.id"
+    )
+    .then(([rows]) => {
+      console.table(rows);
+      mainMenu();
+    })
+    .catch((error) => {
+      console.error("Error fetching roles:", error);
+      mainMenu();
+    });
 }
+
+// Define functions for other menu options (addDepartment, addRole, etc.)
 
 mainMenu();
