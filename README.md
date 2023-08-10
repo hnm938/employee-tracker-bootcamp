@@ -14,6 +14,6 @@ Create the database \
 Select database to use \
 `USE employee_tracker;` \
 Run the SQL script \
-`source /path/to/your/database.sql;`
+`source /path/to/your/database.sql;` \
 Verify tables exist \
 `SHOW TABLES` \
