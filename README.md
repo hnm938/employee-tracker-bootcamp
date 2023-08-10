@@ -16,4 +16,6 @@ Select database to use \
 Run the SQL script \
 `source /path/to/your/database.sql;` \
 Verify tables exist \
-`SHOW TABLES;`
+`SHOW TABLES;` \
+In the root project folder, run the start command \
+`node app.js`
