@@ -10,7 +10,7 @@ As well as calculate department budgets and keep tracker of managers.\
 To start, login to your MySQL client \
 `mysql -u username -p` \
 Create the database \
-`CREATE SCHEMA employee_tracker;` \
+`CREATE DATABASE employee_tracker;` \
 Select database to use \
 `USE employee_tracker;` \
 Run the SQL script \
