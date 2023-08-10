@@ -16,4 +16,4 @@ Select database to use \
 Run the SQL script \
 `source /path/to/your/database.sql;` \
 Verify tables exist \
-`SHOW TABLES` \
+`SHOW TABLES;`
